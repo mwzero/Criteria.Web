@@ -1,0 +1,43 @@
+<!-- <div class="container" ng-show="visibile"> -->
+<!-- ztg del ng-show="visibile"> -->
+<div class="container">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed"
+			data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+			aria-controls="navbar">
+			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+			<span class="icon-bar"></span> <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand">Criteria Console</a>
+	</div>
+	<div id="navbar" class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+			<li class="active">
+				<a ng-click="showHome()">Home</a>
+			</li>
+            		<li>
+				<a ng-click="showProcesses()">Processes</a>
+			</li>
+			<li>
+				<a ng-click="showWorklist()">Worklist <i class="fa fa-fw fa-bell-o"></i> <span class="badge">{{taskSize}}</span></a>
+			</li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					<span class="glyphicon glyphicon-user"></span>Maurizio Farina <i class="fa fa-fw fa-bell-o"></i> 
+					<span class="badge">{{notifiesSize}}</span>
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a>Notifiche</a></li>
+					<li><a>Messaggi</a></li>
+					<li class="divider"></li>
+					<li class="dropdown-header">Profilo</li>
+					<li><a>Visualizza Profilo</a></li>
+					<li><a>Logout</a></li>
+				</ul></li>
+		</ul>
+	</div>
+</div>
+

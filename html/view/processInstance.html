@@ -1,0 +1,76 @@
+<div class="page-header">
+  <h1>{{processInstance._Name}} <small>({{processInstance.ProcessId}})</small></h1>
+</div>
+<p class="bg-success">
+	Status: {{processInstance.Status}} 
+</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Attributes</div>
+  
+  <!-- Table -->
+  <table class="table">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Value</th>
+			<th>Direction</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="attribute in processInstance.Attributes.Attribute">
+			<td>{{attribute._Name}}</td>
+			<td>{{attribute._Type}}</td>
+			<td>{{attribute.Value}}</td>
+			<td>{{attribute._Direction}}</td>
+			<td>
+				<!-- Azioni -->
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Activities</div>
+  
+  <!-- Table -->
+  <table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Status</th>
+			<th>Grants</th>
+			<th>History</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="activity in processInstance.Activities.Activity">
+			<td>{{activity._Id}}</td>
+			<td>{{activity._Name}}</td>
+			<td>{{activity._Type}} - {{activity.Behaviour.Start._Mode}}</td>
+			<td><small>{{activity.Log._Status}} - {{activity.Log._Owner}} - {{activity.Log._Date}} </small></td>
+			<td>{{activity.Grants}}</td>
+			<td>
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						History
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						<li ng-repeat="status in activity.Log.Status">{{status._Date}} - {{status.__text}}</li>
+					</ul>
+				</div>
+			</td>
+			<td align="right">
+				<button class="btn btn-default" type="button" ng-click="runTask(processInstance.ProcessId,activity._Name )">Run</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>

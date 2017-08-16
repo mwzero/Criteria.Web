@@ -1,0 +1,45 @@
+FROM fedora
+MAINTAINER http://fedoraproject.org/wiki/Cloud
+RUN dnf -y update && dnf clean all
+RUN dnf -y install nginx && dnf clean all
+RUN dnf -y install mariadb && dnf clean all
+RUN dnf -y install mariadb-server && dnf clean all
+RUN dnf -y install spawn-fcgi && dnf clean all
+
+RUN echo "export WF_HOME=/usr/share/nginx/html" >> /etc/profile
+RUN echo "export CRITERIA_HOME=/usr/share/nginx/html" >> /etc/profile
+
+#RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+#RUN echo "nginx on Fedora" > /usr/share/nginx/html/index.html
+
+# vim html/database/Criteria.xml, --> <Password></Password>  --> mysql password is NULL
+
+RUN mkdir -p /opt/cBPM/criteria-lin/lib
+RUN rm -rf /usr/share/nginx/html
+COPY /nginx.conf /etc/nginx/
+COPY /html /usr/share/nginx/
+COPY /executer /usr/share/nginx/html/
+COPY /executer /opt/cBPM/criteria-lin/lib/
+COPY /libLibraries.so /opt/cBPM/criteria-lin/lib/
+COPY /libWorkflowEngineD.so /opt/cBPM/criteria-lin/lib/
+COPY /libxerces-c-3.1.so /opt/cBPM/criteria-lin/lib/
+
+RUN chown nginx.nginx -R /usr/share/nginx/html/
+RUN chmod 755 -R /usr/share/nginx/html/
+
+RUN systemctl restart mariadb.service
+RUN mysqladmin -u root -p'' create criteria
+RUN -uroot -p'' < /usr/share/nginx/html/database/scripts/mysql/criteria_mysql.sql
+RUN -uroot -p'' criteria < /usr/share/nginx/html/database/scripts/mysql/dm_mysql.sql
+
+EXPOSE 80
+
+#CMD [ "/usr/sbin/nginx" ]
+#CMD [ "export", "WF_HOME=/usr/share/nginx/html" ]
+#CMD [ "export", "CRITERIA_HOME=/usr/share/nginx/html" ]
+
+CMD [ "systemctl", "stop", "httpd.service" ]
+CMD [ "systemctl", "start", "nginx.service" ]
+CMD [ "systemctl", "start", "mariadb.service" ]
+
+

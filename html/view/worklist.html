@@ -1,0 +1,69 @@
+<div class="row">
+
+	<div class="col-md-5 pull-right">
+		<span>
+			<form class="form-inline ">
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="myTasks" ng-model="wiTypes">My Tasks
+                 </label>
+                 <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="AllTasks" ng-model="wiTypes">All Tasks
+                 </label>
+	  			<div class="form-group">
+	    			<input type="text" class="form-control input-sm " id="newUser" placeholder="user" ng-model="user">
+	  			</div>
+	  			<a ng-click="switchUser()" class="btn btn-success">Refresh</a>
+			</form>
+		</span>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-md-12">
+	
+		<div class="panel panel-primary">
+		<div class="panel-heading">WorkItems</div>
+			<table class="table">
+				<thead>
+				<tr>
+					<th>ProcessId</th>
+                    <th>Date</th>
+					<th>Name</th>
+					<!--th>Type</th-->
+					<th>Status</th>
+                    <th>Owner</th>
+					<!--th>Grants</th-->
+					<th></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="activity in alltasks.activities.Activities.Activity">
+					<td>{{activity.ProcessId}}</td>
+                    <td>{{activity.Log._Date}}</td>
+					<td>{{activity._Name}}</td>
+					<!--td>{{activity._Type}} - {{activity.Behaviour.Start._Mode}}</td-->
+					<td>{{activity.Log._Status}}</small></td>
+					<td>{{activity.Log._Owner}}</td>
+					<!--td>{{activity.Grants}}</td-->
+					<td>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button class="btn btn-default" type="button" ng-click="runTask(activity.ProcessId,activity._Name )">Run</button>
+
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                History
+                                <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li ng-repeat="status in activity.Log.Status">{{status._Date}} - {{status.__text}}</li>
+                                    </ul>
+                            </div>
+                        </div>
+					</td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</div>

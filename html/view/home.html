@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="col-md-6">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="processInstance in processInstanceList.WorkflowsProcesses.WorkflowProcess">
+					<td><a ng-click="showProcess(processInstance.ProcessId)">{{processInstance.ProcessId}}</a></td>
+					<td>{{processInstance._Name}}</td>
+					<td>{{processInstance.Status}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-md-6">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="process in processTemplateList.WorkflowProcesses.WorkflowProcess">
+					<td>{{process._Name}}</td>
+					<td align="right"><span>
+							<a ng-click="createProcess(process._Name)"
+							class="btn btn-success btn-sm">Create Process</a>
+					</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
