@@ -1,2 +1,9 @@
 # Criteria.Web
-Criteria Workflow Engine Web Console
+
+An angular app for Criteria ( the C/C++ Business Process Management engine) console 
+
+## Installation
+
+npm install
+grunt
+

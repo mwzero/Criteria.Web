@@ -1,0 +1,37 @@
+{
+  "name": "Criteria.Web",
+  "description": "the official Criteria Web Console",
+  "main": "index.html",
+  "authors": [
+    "Maurizio Farina"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "criteria",
+    "workflow",
+    "console",
+    "engine"
+  ],
+  "homepage": "https://github.com/mwzero/Criteria.Web",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ace": "^1.2.8",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "angular": "^1.6.5",
+    "xml2json": "^1.1.1",
+    "angular-animate": "^1.6.5",
+    "angular-messages": "^1.6.5",
+    "angular-resource": "^1.6.5",
+    "angular-ui-router": "^1.0.6",
+    "api-check": "^7.5.5",
+    "angular-formly": "^8.4.1",
+    "angular-formly-templates-bootstrap": "^6.3.2"
+  }
+}

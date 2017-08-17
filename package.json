@@ -1,0 +1,20 @@
+{
+    "name": "Criteria.Web",
+    "version": "0.1.0",
+	"author" : "Maurizio Farina",
+	"private" : false,
+     "devDependencies" : {
+        "grunt" :                       "~0.4.0",
+        "grunt-contrib-cssmin":         "*",
+        "grunt-contrib-sass":           "*",
+        "grunt-contrib-uglify":         "*",
+        "grunt-contrib-watch":          "*",
+		"grunt-contrib-clean":          "*",
+		"grunt-contrib-copy":          "*",
+		"grunt-bower":  		        "*",
+		"grunt-bowercopy": 		        "*",
+        "grunt-cssc":                   "*",
+        "grunt-htmlhint":               "*",
+        "matchdep":                     "*"
+    }
+}
